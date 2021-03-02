@@ -30,6 +30,14 @@ class Cliente
     // envia un numero punto flotante
     salida.writeDouble(1234567890.1234567890);
 
+    // envía mil números punto flotante
+    long startTime = System.currentTimeMillis();
+    for (double i = 1; i <= 10000; i++) {
+      salida.writeDouble(i);
+    }
+    long endTime = System.currentTimeMillis();
+    System.out.println("Tiempo ejecución(envío punto flotantes con writeDouble): " + (endTime - startTime));
+
     // envia una cadena
     salida.write("hola".getBytes());
 

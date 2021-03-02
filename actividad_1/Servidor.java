@@ -35,6 +35,15 @@ class Servidor
     double x = entrada.readDouble();
     System.out.println(x);
 
+    // recibe mil números punto flotante
+    long startTime = System.currentTimeMillis();
+    double[] flotantes = new double[10000];
+    for (int i = 0; i < 10000; i++) {
+      flotantes[i] = entrada.readDouble();
+    }
+    long endTime = System.currentTimeMillis();
+    System.out.println("Tiempo ejecución(recibo punto flotantes con readDouble): " + (endTime - startTime));
+
     // recibe una cadena
     byte[] buffer = new byte[4];
     read(entrada,buffer,0,4);
