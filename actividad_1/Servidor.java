@@ -59,6 +59,18 @@ class Servidor
     for (int i = 0; i < 5; i++)
       System.out.println(b.getDouble());    
 
+
+    // recibe 10mil números punto flotante
+    startTime = System.currentTimeMillis();
+    byte[] flotanteEntrada = new byte[10000*8];
+    read(entrada, flotanteEntrada, 0, 10000*8);
+    ByteBuffer arregloFlotantes = ByteBuffer.wrap(flotanteEntrada);
+    for (int i = 0; i <= 10; i++) {
+      System.out.println(arregloFlotantes.getDouble());
+    }
+    endTime = System.currentTimeMillis();
+    System.out.println("Tiempo ejecución(recibe punto flotantes con BytBuffer): " + (endTime - startTime));
+
     salida.close();
     entrada.close();
     conexion.close();

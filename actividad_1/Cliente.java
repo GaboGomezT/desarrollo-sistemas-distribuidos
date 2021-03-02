@@ -30,7 +30,7 @@ class Cliente
     // envia un numero punto flotante
     salida.writeDouble(1234567890.1234567890);
 
-    // envía mil números punto flotante
+    // envía 10mil números punto flotante
     long startTime = System.currentTimeMillis();
     for (double i = 1; i <= 10000; i++) {
       salida.writeDouble(i);
@@ -55,6 +55,17 @@ class Cliente
     b.putDouble(1.5);
     byte[] a = b.array();
     salida.write(a);
+
+    // envía 10mil números punto flotante
+    startTime = System.currentTimeMillis();
+    ByteBuffer flotanteSalida = ByteBuffer.allocate(10000*8);
+    for (double i = 1; i <= 10000; i++) {
+      flotanteSalida.putDouble(i);
+    }
+    byte[] arregloFlotantes = flotanteSalida.array();
+    salida.write(arregloFlotantes);
+    endTime = System.currentTimeMillis();
+    System.out.println("Tiempo ejecución(envío punto flotantes con BytBuffer): " + (endTime - startTime));
 
     salida.close();
     entrada.close();
